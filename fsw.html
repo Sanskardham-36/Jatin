@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jatin - 500 MCQ Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .header {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .quiz-section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9e9e9;
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #333;
+            font-size: 16px;
+        }
+        .option {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .option input {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>MCQ EXAM TEST</h1>
+    </div>
+
+    <!-- આ જગ્યાએ બધા પ્રશ્નો આપમેળે આવી જશે -->
+    <div id="quiz-container"></div>
+    
+    <button class="submit-btn" onclick="submitQuiz()">જવાબ સબમિટ કરો</button>
+</div>
+
+<script>
+    // અહીં તમે ૧ થી લઈને ૫૦૦ સુધીના ગમે તેટલા પ્રશ્નો ઉમેરી શકો છો
+    // ફોર્મેટ બરાબર આ જ રાખવાનું રહેશે
+    const mcqData = [
+        {
+            id: 1,
+            question: "૧. ભારતની રાજધાની કઈ છે?",
+            options: ["દિલ્હી", "મુંબઈ", "કોલકાતા", "ચેન્નઈ"]
+        },
+        {
+            id: 2,
+            question: "૨. ગુજરાતનું પાટનગર કયું છે?",
+            options: ["અમદાવાદ", "ગાંધીનગર", "સુરત", "રાજકોટ"]
+        },
+        {
+            id: 3,
+            question: "૩. પ્રશ્ન નંબર ૩ અહીં લખો...",
+            options: ["વિકલ્પ A", "વિકલ્પ B", "વિકલ્પ C", "વિકલ્પ D"]
+        }
+        // તમે આ રીતે નીચે બીજા પ્રશ્નો ઉમેરી શકો છો...
+    ];
+
+    // પ્રશ્નોને પેજ પર આપમેળે બતાવવા માટેનું ફંક્શન
+    function loadQuiz() {
+        const quizContainer = document.getElementById('quiz-container');
+        let quizHtml = '';
+
+        mcqData.forEach((item) => {
+            quizHtml += `
+                <div class="quiz-section">
+                    <div class="question">${item.question}</div>
+            `;
+            
+            item.options.forEach((option, index) => {
+                quizHtml += `
+                    <label class="option">
+                        <input type="radio" name="question-${item.id}" value="${index}">
+                        ${option}
+                    </label>
+                `;
+            });
+
+            quizHtml += `</div>`;
+        });
+
+        quizContainer.innerHTML = quizHtml;
+    }
+
+    // જ્યારે સબમિટ બટન દબાવો ત્યારે શું થાય તે માટે
+    function submitQuiz() {
+        alert("તમારી ટેસ્ટ સબમિટ થઈ ગઈ છે!");
+    }
+
+    // પેજ લોડ થાય ત્યારે પ્રશ્નો ચાલુ કરવા
+    window.onload = loadQuiz;
+</script>
+
+</body>
+</html>
